@@ -75,7 +75,13 @@ function readFile(path, cb) {
 function ready() {
   const flags = Object.assign({jsCode: sources}, argv);
   const out = compile(flags);
+  printErrors(out);
   console.log(out.compiledCode);
+}
+
+function printErrors() {
+  console.warn(out.warnings);
+  console.error(out.errors);
 }
 
 function error(err) {
